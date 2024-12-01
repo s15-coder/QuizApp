@@ -1,6 +1,7 @@
 import { useState } from "react"
 import QuizCompletedImg from "../assets/quiz-complete.png"
 import QUESTIONS from "../questions"
+import ProgressBar from "./ProgressBar";
 
 export default function Quiz(){
     const [answers, setAnswers] = useState([])
@@ -23,6 +24,7 @@ export default function Quiz(){
     shuffledAnswers.sort(()=>Math.random() - 0.5)
     
     return <div id="quiz">
+    <ProgressBar timeout={10000} onTimeOut={()=>handleSelectAnswer(null)}/>
     <div id="questions">
         <h2>{QUESTIONS[currentActiveQuestion].text}</h2>
         <ul id="answers">
