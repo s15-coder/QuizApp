@@ -56,6 +56,7 @@ export default function Summary({ answers }) {
                 return <li key={index}>
                     <h3>{index + 1}</h3>
                     <p className="question">{QUESTIONS[index].text}</p>
+                    {cssClass === 'user-answer skipped' ? <p className={"user-answer skipped"}>{"Skipped"}</p> : null}
                     {cssClass === 'user-answer correct' ? <p className={"user-answer correct"}>{answer}</p> : null}
                     {cssClass === 'user-answer wrong' ? <p className={"user-answer wrong"}>{"Choosen Answer: " + answer}</p> : null}
                     {cssClass === 'user-answer wrong' ? <p className={"user-answer correct"}>{"Correct Answer: " + QUESTIONS[index].answers[0]}</p> : null}

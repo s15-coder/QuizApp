@@ -35,7 +35,7 @@ export default function Question({ index, skipHandler, selectHandler }) {
 
     }
     return <>
-        <ProgressBar key={index} timeout={15000} onTimeOut={skipHandler} />
+        <ProgressBar key={index} timeout={15000} onTimeOut={skipHandler} index={index} />
         <div id="questions">
             <h2>{QUESTIONS[index].text}</h2>
             <Answers

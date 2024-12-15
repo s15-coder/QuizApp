@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-
-export default function ProgressBar({ timeout, onTimeOut }) {
+import QUESTIONS from "../questions"
+export default function ProgressBar({ timeout, onTimeOut, index }) {
     const [remainingSeconds, setRemainingSeconds] = useState(timeout)
     // This effect is to get to know when the timeout is reached
     useEffect(() => {
@@ -18,5 +18,6 @@ export default function ProgressBar({ timeout, onTimeOut }) {
 
     }, [])
 
-    return <progress id="question-time" max={timeout} value={remainingSeconds}></progress>
+    return <><progress id="question-time" max={timeout} value={remainingSeconds}></progress>
+        <div className="row-progress-bar"> <p>{index + 1}/{QUESTIONS.length}</p></div></>
 }
