@@ -11,34 +11,31 @@ export default function Question({ index, skipHandler, selectHandler }) {
         isCorrect: null
     })
     function selectAnswer(answer) {
-        selectHandler(answer)
 
-        // if (selectedAnswer.text) return
-        // setSelectedAnswer({
-        //     text: answer,
-        //     isCorrect: null,
-        // })
-        // setTimeout(() => {
+        if (selectedAnswer.text) return
+        setSelectedAnswer({
+            text: answer,
+            isCorrect: null,
+        })
 
-        //     if (answer === QUESTIONS[index].answers[0]) {
-        //         setSelectedAnswer({
-        //             text: answer,
-        //             isCorrect: true,
-        //         })
-        //     } else {
-        //         setSelectedAnswer({
-        //             text: answer,
-        //             isCorrect: false,
-        //         })
-        //     }
-        //     setTimeout(() => {
-        //         selectHandler(answer)
-        //     }, 1000)
+        if (answer === QUESTIONS[index].answers[0]) {
+            setSelectedAnswer({
+                text: answer,
+                isCorrect: true,
+            })
+        } else {
+            setSelectedAnswer({
+                text: answer,
+                isCorrect: false,
+            })
+        }
+        setTimeout(() => {
+            selectHandler(answer)
+        }, 1000)
 
-        // }, 1000)
     }
     return <>
-        <ProgressBar key={index} timeout={10000} onTimeOut={skipHandler} />
+        <ProgressBar key={index} timeout={15000} onTimeOut={skipHandler} />
         <div id="questions">
             <h2>{QUESTIONS[index].text}</h2>
             <Answers

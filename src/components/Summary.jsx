@@ -1,4 +1,4 @@
-import QuizCompletedImg from "../assets/quiz-complete.png"
+import QuizCompletedImg from "../assets/trophy.png"
 import QUESTIONS from "../questions"
 export default function Summary({ answers }) {
     let correctAnswers = 0
@@ -51,10 +51,14 @@ export default function Summary({ answers }) {
                 } else {
                     cssClass += ' wrong';
                 }
+
+
                 return <li key={index}>
                     <h3>{index + 1}</h3>
                     <p className="question">{QUESTIONS[index].text}</p>
-                    <p className={cssClass}>{answer ?? 'Skipped'}</p>
+                    {cssClass === 'user-answer correct' ? <p className={"user-answer correct"}>{answer}</p> : null}
+                    {cssClass === 'user-answer wrong' ? <p className={"user-answer wrong"}>{"Choosen Answer: " + answer}</p> : null}
+                    {cssClass === 'user-answer wrong' ? <p className={"user-answer correct"}>{"Correct Answer: " + QUESTIONS[index].answers[0]}</p> : null}
                 </li>
             })}
             {/* <li key={index}>
