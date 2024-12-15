@@ -1,8 +1,6 @@
-import { useCallback, useState } from "react"
+import { lazy, Suspense, useCallback, useState } from "react"
 import QUESTIONS from "../questions"
-import ProgressBar from "./ProgressBar";
 import Question from "./Question";
-import Summary from "./Summary";
 
 export default function Quiz() {
     const [answers, setAnswers] = useState([])
@@ -16,11 +14,11 @@ export default function Quiz() {
     const handleSkipQuestion = useCallback(() => handleSelectAnswer(null), [])
 
     if (isQuizCompleted) {
-        return <Summary answers={answers} />
+        const Summary = lazy(() => import('./Summary'))
+        return <Suspense><Summary answers={answers} /></Suspense>
     }
 
     return <div id="quiz">
-
         <Question
             key={currentActiveQuestion}
             index={currentActiveQuestion}
